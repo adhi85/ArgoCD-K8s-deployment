@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: app-tictactoe
-        image: forsignup8580/tictactoe:v1
+        image: forsignup8580/tictactoe:v2
         ports:
         - containerPort: 8080
   strategy:
