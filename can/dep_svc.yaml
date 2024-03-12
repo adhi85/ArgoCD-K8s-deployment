@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: app-tictactoe
-  replicas: 6
+  replicas: 5
   template:
     metadata:
       labels:
@@ -19,6 +19,33 @@ spec:
         name: app-tictactoe
         ports:
         - containerPort: 8080  
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: rollout-tictactoe
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app-tictactoe
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app-tictactoe
+    spec:
+      containers:
+      - name: app-tictactoe
+        image: forsignup8580/tictactoe:v1
+        ports:
+        - containerPort: 8080
+  strategy:
+    canary:
+      steps:
+        - setWeight: 20
+        - pause: {}
+          
+
 ---
 apiVersion: v1
 kind: Service
