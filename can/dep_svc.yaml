@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: app-tictactoe
-  replicas: 4
+  replicas: 6
   template:
     metadata:
       labels:
