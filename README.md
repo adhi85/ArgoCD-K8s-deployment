@@ -1,7 +1,7 @@
 # ArgoCD for Continuos Deployment and Argo Rollouts for deployment strategy (Canary)
 
 ## Prerequisites
-- minikube installed on you system
+- minikube installed on your system
 - docker installed and configured
 
 ## Setup and configuration
@@ -52,4 +52,15 @@
               <img width="595" alt="argocd" src="https://github.com/adhi85/ArgoCD-K8s-deployment/assets/72289081/f85e0fde-d193-48d9-b7a2-c3284089bccb">
 
 
+## Cleanup
+* Delete Deployments and Services
+  > kubectl delete deployment deployment-tictactoe   
+  > kubectl delete service service-tictactoe
+* Delete Argo Rollouts resources
+  > kubectl delete rollout rollout-tictactoe
+* Delete Argo CD Application
+  > kubectl delete application tictactoe -n argocd
+* Delete Docker images from the container registry
+* (Optional) Delete ArgoCD
+     > kubectl delete namespace argocd
    
