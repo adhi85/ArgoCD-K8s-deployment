@@ -26,6 +26,13 @@
      > minikube service argocd-server -n argocd
       - We can get the URL to access the ArgoCD UI now.
       - Paste the URL in browser and login to ArgoCD UI.
+4. Default username will be *admin*
+5. To get the Password:
+    >  kubectl get secret -n argocd  
+    > kubectl edit secret argocd-initial-admin-secret -n argocd
+6. Copy the password from there and decode it.
+    > echo \<Your-copied-password\> | base64 --decode
+7. Use the decoded password to login.
 
 ## Creating the Gitops Pipeline
 1. We have used a simple node application for deployment
@@ -34,9 +41,9 @@
      > docker build -t \<your-username\>/tictactoe:v1 .  
      > docker push \<your-username\>/tictactoe:v1
 3. Now we have created the image for our application and pushed it to Docker hub.
-4. Now we have to deploy the application using ArgoCD.  
+4. Deploy the application using ArgoCD.  
     1. I have provided the YAML file.
-    2. Created an Application in the ArgoCD UI
+    2. Create an Application in the ArgoCD UI
         *  Give the repository url: https://github.com/adhi85/ArgoCD-K8s-deployment
         *  Give PATH (This is where the YAML files are):   **canary**
         *  create the application
@@ -48,8 +55,9 @@
 3. Update the Rollout definition to use the latest image for our app.
     - Previously we used v1. Change it to v2.
 4. We can monitor the deployment of new version and ensure that canary release is succesfull.
-   * We have set the weight as 20.   
+   * We have set the weight as 20. So 20% of 5 pods, i.e 1 pod will get the new version and 80% will be using previous version    
               <img width="595" alt="argocd" src="https://github.com/adhi85/ArgoCD-K8s-deployment/assets/72289081/f85e0fde-d193-48d9-b7a2-c3284089bccb">
+   * We can promote it if we are ready to move to the new version.
 
 
 ## Cleanup
