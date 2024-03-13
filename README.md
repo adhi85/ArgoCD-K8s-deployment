@@ -38,7 +38,7 @@
     1. I have provided the YAML file.
     2. Created an Application in the ArgoCD UI
         *  Give the repository url: https://github.com/adhi85/ArgoCD-K8s-deployment
-        *  Give PATH (This is where the YAML files are):   **can**
+        *  Give PATH (This is where the YAML files are):   **canary**
         *  create the application
 5. ArgoCD will create the deployments and services into cluster.
 
