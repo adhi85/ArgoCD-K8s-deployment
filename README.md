@@ -47,7 +47,7 @@
 2. We can make some minor changes to the application and rebuild the docker image and push it to Docker hub.
 3. Update the Rollout definition to use the latest image for our app.
     - Previously we used v1. Change it to v2.
-4. We can monitor the deployment of new version and enusre that canary release is succesful.
+4. We can monitor the deployment of new version and ensure that canary release is succesfull.
    * We have set the weight as 20.   
               <img width="595" alt="argocd" src="https://github.com/adhi85/ArgoCD-K8s-deployment/assets/72289081/f85e0fde-d193-48d9-b7a2-c3284089bccb">
 
